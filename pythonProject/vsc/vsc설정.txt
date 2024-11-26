@@ -1,0 +1,25 @@
+> IDE(통합 개발 환경)에서 자주 쓰이는 단축키 (Visual Studio Code 기준)
+
+- 자동 완성 기능 사용 : `Ctrl + Space` 
+                         `Command + Space`
+- 터미널 창 열기/닫기 : `Ctrl + ``
+                        `Command + ``
+- 설정 창 열기 : `Ctrl + ,`
+                 `Command + ,`
+- 라인 이동 : `Alt + Up/Down`
+                `Option + Up/Down`
+- 주석 : `Ctrl + /`
+             `Command + /`
+- 들여쓰기/내어쓰기 : `Ctrl + [ / ]` 
+                    `Command + [ / ]`
+- 바꾸기 : `Ctrl + H` 
+             `Command + H`
+- 사이드 바 토글 : `Ctrl + B`
+                    `Command + B`
+- 자동 포맷팅 : `Shift + Alt + F
+                `Shift + Option + F`
+→ Windows 추가 기능 : 선택 후 `Ctrl + K + F`
+
+========================================
+better comments
+: vsc에서 주석을 예쁘게 꾸미는 플러그인(확장 기능)
