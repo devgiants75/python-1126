@@ -7,6 +7,18 @@
 #   >> x와 y의 값에 각각 데이터를 리스트 형태로 전달
 
 import matplotlib.pyplot as plt
+from matplotlib import font_manager, rc
+import matplotlib
+
+# 폰트 경로 직접 지정
+font_path = 'C:\\Windows\\Fonts\\H2PORM.TTF'
+
+# 폰트 이름 가져오기
+font_name = font_manager.FontProperties(fname=font_path).get_name()
+
+# matplotlib과 rc 함수를 사용하여 폰트 설정
+matplotlib.rc('font', family=font_name)
+
 figure = plt.figure()
 axes = figure.add_subplot(111) # 1행 1열 1번째
 
