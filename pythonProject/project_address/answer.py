@@ -134,6 +134,44 @@ class AddressBook:
             
     # delete()
     # : 사용자로부터 삭제하고자 하는 데이터의 이름을 입력받아 address_list에서 제거
+    def delete(self):
+        print('== 기존 주소록 삭제 ==')
+        name = input('삭제할 이름 입력: ')
+        
+        # 변수에 값이 들어 있는 경우: True
+        # False 값: 빈 문자열(''), 0, undefined, null 등
+        if not name:
+            print('입력된 이름이 주소록에 없습니다. 삭제할 수 없습니다.')
+            return # if 문 종료
+        
+        deleted = False # 삭제가 진행된 경우 해당 변수를 True로 변경
+        
+        # enumerate: 파이썬 내장 함수
+        # - 순회 가능한 iterable의 각 원소와 그 원소의 인덱스를 튜플로 묶어서 반환
+        for i, person in enumerate(self.address_list):
+            # 사용자가 삭제하고자하는 데이터의 이름과
+            # , 순회하면서 나타나는 각 원소 중 해당 이름과 동일한 데이터의 경우
+            if name == person.name:
+                print(f'검색된 전화번호가 {person.phone}입니다.')
+                
+                # 사용자의 입력을 받은 후 대문자로 변환
+                if input('삭제할까요? (Y/N) : ').upper() != 'Y':
+                    # 사용자가 삭제를 희망하지 않는 경우
+                    continue # for문으로 되돌아가 다음 사람을 검색
+                
+                del self.address_list[i] # 해당 인덱스 요소를 삭제
+                
+                # 데이터 삭제 완료 시 deleted를 True로 변경
+                deleted = True
+                print(f'{name}의 정보를 삭제했습니다.')
+                
+                # csv 파일을 업데이트 (삭제된 정보를 제거)
+                self.file_generator()
+                break
+        
+        # deleted 변수를 사용하여 정보 삭제 유무를 확인 메세지 출력
+        if not deleted:
+            print(f'{name}의 정보가 삭제되지 않았습니다.')
     
     # update()
     # : 사용자로부터 수정할 사용자 정보를 입력 받아서 address_list에서 해당 사용자 정보를 수정
