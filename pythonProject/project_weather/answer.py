@@ -45,7 +45,7 @@ class WeatherDataManager:
             if not (row[0] == city_name and row[1] == date)
         ]
         
-        self._save_date(data)
+        self._save_data(data)
         
     def _load_data(self):
         # csv 파일에서 날씨 데이터를 로드하는 내부 메서드
@@ -132,7 +132,8 @@ def main():
             
             weather_manager.delete_data(city_name, date)
             
-        elif command == 'visulaize':
+        elif command == 'visualize':
+            print('visualize')
             # csv 파일에서 날씨 데이터를 로드
             data = weather_manager._load_data()
             # 로드된 날씨 데이터를 시각화
