@@ -146,6 +146,13 @@ class AddressBook:
     
     # print_all()
     # : 전체 주소록 정보를 출력하는 메서드
+    def print_all(self):
+        print('== 전체 연락처 출력 ==')
+        for person in self.address_list:
+            person.info()
+        
+        # len(배열명): 배열의 길이를 반환 - 요소의 개수
+        print(f'총 {len(self.address_list)}개의 주소록이 있습니다.')
     
 my_app = AddressBook() # 클래스로 객체 생성(인스턴스화)
 my_app.run() # 메서드(함수) 실행
