@@ -89,3 +89,60 @@ class WeatherVisualization:
         
         plt.legend() # 범례 추가
         plt.show() # 그래프를 화면에 표시
+        
+#! main 함수 작성
+# : 실행 함수
+def main():
+    # 날씨 데이터를 저장할 csv 파일의 이름을 설정
+    filename = 'weather_data.csv'
+    
+    # WeatherDataManager 클래스의 인스턴스를 생성
+    weather_manager = WeatherDataManager(filename)
+    
+    while True:
+        print('=== Enter command ===')
+        command = input('create / read / update / delete / visualize / exit :')
+        
+        if command == 'create':
+            # 사용자로부터 필요한 정보를 입력받기
+            city_name = input('Enter City Name: ')
+            date = input('Enter Date (YYYY-MM-DD): ')
+            max_temp = input('Enter Max Temperature: ')
+            min_temp = input('Enter Min Temperature: ')
+            rainfall = input('Enter Rainfall: ')
+    
+            # 입력받은 정보를 csv에 저장
+            weather_manager.create_data(city_name, date, max_temp, min_temp, rainfall)
+        
+        elif command == 'read':   
+            weather_manager.read_data() 
+            
+        elif command == 'update':
+            city_name = input('Enter city name: ')
+            date = input('Enter date (YYYY-MM-DD)')
+            # 데이터를 콤마로 구분하여 입력받기
+            new_data = input('Enter new max, min, rainfall data(seperated by comma)').split(',')
+    
+            # 입력받은 데이터로 데이터 수정
+            weather_manager.update_data(city_name, date, new_data)
+            
+        elif command == 'delete':
+            city_name = input('Enter city name')
+            date = input('Enter date (YYYY-MM-DD)')
+            
+            weather_manager.delete_data(city_name, date)
+            
+        elif command == 'visulaize':
+            # csv 파일에서 날씨 데이터를 로드
+            data = weather_manager._load_data()
+            # 로드된 날씨 데이터를 시각화
+            WeatherVisualization.visualize(data)
+        
+        elif command == 'exit':
+            break # 프로그램 종료
+        
+        else:
+            # 입력된 명령어가 유효하지 않은 경우
+            print('Invalid Command')
+            
+main()
