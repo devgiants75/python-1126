@@ -218,7 +218,22 @@ class AddressBook:
     # : 사용자로부터 이름을 입력 받아서 동일한 정보를 찾아 모두 출력
     # - 같은 이름으로 등록된 경우 모두 출력
     # - 검색된 사람이 없으면 메시지 출력
-    
+    def search(self):
+        print('=== 주소록 검색 ===')
+        name = input('찾을 이름을 입력 : ')
+        if not name:
+            print('입력된 이름이 없어서 검색을 취소합니다.')
+            return
+        exist = False # 검색 되었는지 유무를 판단하는 변수
+        
+        for person in self.address_list:
+            if name == person.name:
+                person.info()
+                exist = True
+                
+        if not exist:
+            print('{}의 정보가 없습니다.'.format(name))
+            
     # print_all()
     # : 전체 주소록 정보를 출력하는 메서드
     def print_all(self):
