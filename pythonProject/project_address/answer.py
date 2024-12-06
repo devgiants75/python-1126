@@ -117,7 +117,7 @@ class AddressBook:
         print('== 신규 주소록 생성 ==')
         name = input('등록할 이름 입력: ')
         phone = input('등록할 전화번호 입력: ')
-        address = input('등록할 주소 입력')
+        address = input('등록할 주소 입력: ')
 
         # and 논리 연산자
         # : 모든 값이 true 여야 true를 반환
