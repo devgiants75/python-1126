@@ -175,6 +175,43 @@ class AddressBook:
     
     # update()
     # : 사용자로부터 수정할 사용자 정보를 입력 받아서 address_list에서 해당 사용자 정보를 수정
+    def update(self):
+        print('=== 기존 주소록 수정 ===')
+        name = input('수정할 이름을 입력 : ')
+        
+        if not name:
+            # name이 빈 문자열일 경우
+            print('입력된 이름이 없어 수정을 취소합니다.')    
+            return
+        
+        updated = False # 수정 완료 유무를 담는 변수
+        
+        for i, person in enumerate(self.address_list):
+            if name == self.address_list[i].name:
+                if name == person.name:
+                    print(f'검색된 전화번호가 "{person.phone}"입니다.')
+                    # 수정 여부를 묻는 메서지를 먼저 출력하고 대문자로 변환된 입력을 받음
+                    confirm = input('수정할까요? (Y/N) : ').upper()
+                    if confirm != 'Y':
+                        continue # 수정을 희망하지 않는 경우 다음 반복으로 이동
+                    
+                    # 이름의 데이터는 수정하지 X
+                    new_phone = input('변경할 전화번호 입력: ')
+                    if new_phone: # 입력이 있는 경우
+                        person.phone = new_phone # 입력된 내용으로 변경
+                        
+                    new_address = input('변경할 주소 입력: ')
+                    if new_address:
+                        person.address = new_address
+                        
+                    updated = True
+                    print('주소록이 변경되었습니다. 수정된 주소록의 내용을 확인하세요.')
+                    person.info() # 수정된 정보 출력
+                    self.file_generator() # 파일 업데이트
+                    break
+            
+            if not updated:
+                print('{}의 정보가 수정되지 않았습니다.'.format(name))
     
     # search()
     # : 특정 주소록 정보를 검색해서 출력하는 메서드
